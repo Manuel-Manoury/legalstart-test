@@ -1,0 +1,14 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "current"
+                },
+                "forceAllTransforms": true
+            }
+        ],
+        "@babel/preset-react"
+    ]
+}

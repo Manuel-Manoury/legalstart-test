@@ -1,0 +1,10 @@
+## IDE related
+.idea/
+
+## Built assets
+dist/
+node_modules/
+
+## Logs and such
+*.log
+*~

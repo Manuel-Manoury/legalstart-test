@@ -1,0 +1,2 @@
+# Ignore the following files while linting ES6 files
+gulp_tasks/
