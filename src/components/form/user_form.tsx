@@ -10,12 +10,10 @@ import Select from "./select";
 import Horizontal from "../layout/horizontal";
 
 const UserForm = () => {
-  const { watch, handleSubmit } = useFormContext();
-
-  const nationality = watch("nationality");
+  const { handleSubmit } = useFormContext();
 
   const validateForm = () => {
-    console.log("submit");
+    console.log("form submitted");
   };
 
   return (
@@ -44,8 +42,8 @@ const UserForm = () => {
         <Input
           type="text"
           name="passportId"
-          label="Numéro de passport"
-          placeholder={nationality === "nationality-br" ? "Passport Brésilien" : "Passport Français"}
+          label="Numéro de passeport"
+          placeholder="Numéro de passeport"
         />
       </FormRow>
       <FormRow>
@@ -53,7 +51,7 @@ const UserForm = () => {
       </FormRow>
       <Horizontal>
         <Button type="submit" disabled={false ? true : false}>
-          {false ? "Envoyé" : "Envoyer"}
+          Envoyer
         </Button>
       </Horizontal>
     </Form>

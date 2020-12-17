@@ -29,10 +29,7 @@ The set of unambiguous letters is the following:
 C, F, G, H, J, K, L, M, N, P, R, T, V, W, X, Y, Z.
 ```
 
-The email address validation regex is already provided in the codebase, as well as an example of validation function. However, this function is not (yet) 
-used, and can be modified to your liking to behave as you wish.  
-
-The other fields should simply be alphabetic characters + common characters in names (eg like the dash or the space)
+The other fields should simply be not empty
 
 
 ## Goal
@@ -43,13 +40,13 @@ There are several levels of completion for this test :
 
 ### Level 1: Create a validation function for the form
 
-In the codebase, we have the function `validateForm` which, for now, does absolutely nothing. This should be completed in order for us to have the validation 
-of the form upon submit (validating each input).
+In the codebase, we have the function `validateForm` which, for now, does absolutely nothing. Your work is to make sure that the "form submitted" message it
+prints only appears when every input is valid.
 
 ### Level 2: Dynamic validation
 
-In order to provide the user with a better UX, it would be very interesting to have the form inputs validation triggered upon change, so that the user knows
-on the spot if everything is correct or not. The implementation of this mechanism is up to you :)
+In order to provide the user with a better UX, it would be very interesting to have the form inputs validation triggered upon change and to display error 
+messages when relevant, so that the user knows on the spot if everything is correct or not. The implementation of this mechanism is up to you :)
 
 ### Level 3: Impress us !
 
@@ -60,7 +57,7 @@ improve the UX, implement an i18n mechanism, input masks or whatever you want to
 ## Final note 
 
 During the live technical interview, you will most likely be asked to explain your code, maybe tweak it a little bit, so please pay extra care to make your
- code readable and easily "browseable" for you to be very efficient during the interview.
+code readable and easily "browseable" for you to be very efficient during the interview.
  
  The evaluation of your production will be on the following elements (in no particular order) :
  - following the specs
