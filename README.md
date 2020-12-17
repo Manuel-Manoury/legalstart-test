@@ -50,19 +50,5 @@ messages when relevant, so that the user knows on the spot if everything is corr
 
 ### Level 3: Impress us !
 
-Congratulations if you made it this far ! If you wish, feel free to do everything you think is interesting / relevant to improve the form : change the UI, 
-improve the UX, implement an i18n mechanism, input masks or whatever you want to showcase :)   
-
-
-## Final note 
-
-During the live technical interview, you will most likely be asked to explain your code, maybe tweak it a little bit, so please pay extra care to make your
-code readable and easily "browseable" for you to be very efficient during the interview.
- 
- The evaluation of your production will be on the following elements (in no particular order) :
- - following the specs
- - integrating new code in an existing codebase (dealing with historic code)
- - caring for the UX
- - thinking in a product-oriented way
- - structuring your code
-
+Congratulations if you made it this far ! If you wish, feel free to do everything you think is interesting / relevant to improve the form : it can relate to
+UI, UX, features, file structure, code quality or whatever you want to showcase :)
