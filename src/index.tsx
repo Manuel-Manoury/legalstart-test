@@ -12,5 +12,5 @@ ReactDOM.render(
   <Provider>
     <MainView />
   </Provider>,
-  document.getElementById(APP_DOM_CONTAINER),
+  document.getElementById(APP_DOM_CONTAINER)
 );

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useFormContext } from "react-hook-form";
+import { RegisterOptions, useFormContext } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 import Vertical from "../layout/vertical";
 
@@ -27,6 +28,8 @@ type SelectType = {
   name: string;
   label: string;
   defaultValue?: string;
+  onChange?: () => void;
+  validation?: RegisterOptions;
 };
 
 const Select: React.FC<SelectType> = ({
@@ -34,20 +37,24 @@ const Select: React.FC<SelectType> = ({
   name,
   label,
   children,
+  onChange,
+  validation,
 }) => {
-  const { register } = useFormContext();
+  const { register, errors } = useFormContext();
 
   return (
     <Vertical className="input-group">
       <Label name={label} />
       <StyledSelect
-        ref={register}
+        ref={register(validation)}
         id={label}
         name={name}
         defaultValue={defaultValue}
+        onChange={onChange}
       >
         {children}
       </StyledSelect>
+      <ErrorMessage name={name} errors={errors} />
     </Vertical>
   );
 };

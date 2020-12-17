@@ -5,7 +5,7 @@ import Navbar from "../components/layout/navbar";
 import Card from "../components/layout/card";
 import UserForm from "../components/form/user_form";
 
-const MainView = () => (
+const MainView = (): JSX.Element => (
   <Layout>
     <Navbar />
     <Card>

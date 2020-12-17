@@ -8,18 +8,40 @@ import Input from "./input";
 import Select from "./select";
 
 import Horizontal from "../layout/horizontal";
+import { BRAZILIAN_PASSPORT_REGEX, FRENCH_PASSPORT_REGEX } from "../../config";
 
-const UserForm = () => {
-  const { handleSubmit } = useFormContext();
+const UserForm = (): JSX.Element => {
+  const { handleSubmit, trigger, formState, getValues } = useFormContext();
 
   const validateForm = () => {
     console.log("form submitted");
   };
 
+  const validatePassportId = (input: string) => {
+    const userNationality = getValues("nationality");
+    const appropriatePassportRegex =
+      userNationality === "nationality-fr"
+        ? FRENCH_PASSPORT_REGEX
+        : BRAZILIAN_PASSPORT_REGEX;
+
+    if (input && !input.match(appropriatePassportRegex)) {
+      return "The field does not match passport id pattern";
+    }
+
+    return true;
+  };
+
   return (
-    <Form formTitle="Vos informations" handleSubmit={handleSubmit(validateForm)}>
+    <Form
+      formTitle="Vos informations"
+      handleSubmit={handleSubmit(validateForm)}
+    >
       <FormRow>
-        <Select name="gender" label="Titre">
+        <Select
+          name="gender"
+          label="Titre"
+          validation={{ required: "error message" }}
+        >
           <option key="mr" value="mr">
             Mr
           </option>
@@ -27,11 +49,28 @@ const UserForm = () => {
             Mme
           </option>
         </Select>
-        <Input type="text" name="firstname" label="Prénom" placeholder="Prénom" />
-        <Input type="text" name="lastname" label="Nom" placeholder="Nom" />
+        <Input
+          type="text"
+          validation={{ required: "error message" }}
+          name="firstname"
+          label="Prénom"
+          placeholder="Prénom"
+        />
+        <Input
+          type="text"
+          name="lastname"
+          label="Nom"
+          placeholder="Nom"
+          validation={{ required: "error message" }}
+        />
       </FormRow>
       <FormRow>
-        <Select name="nationality" label="Nationalité" defaultValue="nationality-fr">
+        <Select
+          name="nationality"
+          label="Nationalité"
+          defaultValue="nationality-fr"
+          onChange={() => trigger("passportId")}
+        >
           <option key="nationality-fr" value="nationality-fr">
             Française
           </option>
@@ -42,15 +81,25 @@ const UserForm = () => {
         <Input
           type="text"
           name="passportId"
-          label="Numéro de passeport"
+          validation={{
+            required: "error message",
+            validate: validatePassportId,
+          }}
+          label="Numéro de passport"
           placeholder="Numéro de passeport"
         />
       </FormRow>
       <FormRow>
-        <Input type="email" name="email" label="email" placeholder="monemail@example.fr" />
+        <Input
+          type="email"
+          name="email"
+          label="email"
+          placeholder="monemail@example.fr"
+          validation={{ required: "error message" }}
+        />
       </FormRow>
       <Horizontal>
-        <Button type="submit" disabled={false ? true : false}>
+        <Button type="submit" disabled={formState.isSubmitting}>
           Envoyer
         </Button>
       </Horizontal>

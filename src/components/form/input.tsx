@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useFormContext } from "react-hook-form";
+import { RegisterOptions, useFormContext } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 
 import { colors } from "../../style/variables";
 
@@ -24,21 +25,29 @@ type InputType = {
   label: string;
   type: string;
   placeholder: string;
+  validation?: RegisterOptions;
 };
 
-const Input: React.FC<InputType> = ({ name, label, type, placeholder }) => {
-  const { register } = useFormContext();
+const Input: React.FC<InputType> = ({
+  name,
+  label,
+  type,
+  placeholder,
+  validation,
+}) => {
+  const { register, errors } = useFormContext();
 
   return (
     <Vertical className="input-group">
       <Label name={label} />
       <StyledInput
-        ref={register}
+        ref={register(validation)}
         id={label}
         name={name}
         type={type}
         {...(placeholder ? { placeholder } : {})}
       />
+      <ErrorMessage name={name} errors={errors} />
     </Vertical>
   );
 };
